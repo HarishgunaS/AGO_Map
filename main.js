@@ -1,5 +1,6 @@
 function printDirections()
 {
+    performance.mark("start");
     //var data = '{"size" = 4,"map" : [[0,1,0,0],[1,0,1,0],[0,1,0,1],[0,0,1,0]]}';
     var p = document.getElementById("p");
     var start = parseInt(document.getElementById("start").value)-400;
@@ -13,6 +14,10 @@ function printDirections()
     {
         p.innerHTML += String(i+1) + ". Room " + path[i] + "<br>";
     }
+    performance.measure("duration", "start");
+    console.log(performance.getEntriesByType("measure"));
+    performance.clearMarks();
+    performance.clearMeasures();
 }
 
 function BFS(map, start, end, size)
